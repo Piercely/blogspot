@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>注册页面</title>
+    <style>
+      body {
+        /* background: url("images/top.jpg") no-repeat; */
+        width: 100%;
+        height: 100%;
+        background-size: 160% 160%;
+      }
+      .rg_layout {
+        background: #7bbc9a;
+        background: -webkit-linear-gradient(top left, #7bbc9a 0%, #7bbc9a 100%);
+        background: linear-gradient(to bottom right, #7bbc9a 0%, #7bbc9a 100%);
+        background-color: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .rg_left {
+        float: left;
+        margin: 30px;
+      }
+      .rg_center {
+        float: left;
+      }
+      .rg_right {
+        float: right;
+        margin: 15px;
+      }
+      .rg_left > p:first-child {
+        color: white;
+        font-size: 30px;
+      }
+      .rg_left > p:last-child {
+        color: white;
+        font-size: 30px;
+      }
+      .rg_right > p:first-child {
+        font-size: 20px;
+      }
+      .rg_right p {
+        color: white;
+      }
+      .rg_right p a {
+        color: white;
+      }
+      .td_left {
+        width: 100px;
+        height: 45px;
+        text-align: right;
+      }
+      .td_right {
+        padding-left: 50px;
+      }
+      #username,
+      #password,
+      #email,
+      #name,
+      #tel,
+      #birthday,
+      #checkcode,
+      #password2 {
+        width: 251px;
+        height: 32px;
+        border: 1px solid #a6a6a6;
+        border-radius: 5px;
+        padding-left: 10px;
+      }
+      #checkcode {
+        width: 110px;
+      }
+      #img_check {
+        height: 32px;
+        vertical-align: middle;
+      }
+      #btn_sub {
+        width: 270px;
+        height: 40px;
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+        font-size: 18px;
+        margin-top: 30px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: 0;
+        border-radius: 3px;
+        padding: 10px 15px;
+        display: block;
+        text-align: center;
+        font-family: "Microsoft YaHei";
+        -webkit-transition-duration: 0.25s;
+        transition-duration: 0.25s;
+      }
+      .error {
+        color: red;
+      }
+      #td_sub {
+        padding-left: 150px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        document.getElementById("form").onsubmit = function () {
+          return (
+            checkUsername() &&
+            checkPassword() &&
+            checkPassword2() &&
+            checkEmail() &&
+            checkName() &&
+            checkTel() &&
+            checkCode()
+          );
+        };
+        document.getElementById("username").onblur = checkUsername;
+        document.getElementById("password").onblur = checkPassword;
+        document.getElementById("password2").onblur = checkPassword2;
+        document.getElementById("email").onblur = checkEmail;
+        document.getElementById("name").onblur = checkName;
+        document.getElementById("tel").onblur = checkTel;
+        document.getElementById("checkcode").onblur = checkCode;
+      };
+      function checkUsername() {
+        var username = document.getElementById("username").value;
+        var reg_username = /^\w{6,12}$/;
+        var flag = reg_username.test(username);
+        var s_username = document.getElementById("s_username");
+        if (flag) {
+          s_username.innerHTML =
+            "<img width='35' height='25' src='images/check.png'/>";
+        } else {
+          alert("请输入用户名(6-12位英文单词)");
+          s_username.innerHTML = "*用户名格式有误";
+        }
+        return (flag = false);
+      }
+      function checkPassword() {
+        var password = document.getElementById("password").value;
+        var reg_password = /^\w{6,12}$/;
+        var flag = reg_password.test(password);
+        var s_password = document.getElementById("s_password");
+        if (flag) {
+          s_password.innerHTML =
+            "<img width='35' height='25' src='images/check.png'/>";
+        } else {
+          alert("请输入密码(6-12位含有英文字母以及数字的密码)");
+          s_password.innerHTML = "*请输入密码";
+        }
+        return flag;
+      }
+      function checkPassword2() {
+        if (
+          (password2 =
+            document.getElementById("password2").value ==
+            document.getElementById("password").value)
+        ) {
+          s_password.innerHTML =
+            "<img width='35' height='25' src='images/check.png'/>";
+        } else {
+          alert("两次输入密码不一致,请认真核对！");
+          s_password.innerHTML = "*请重复输入密码";
+        }
+        return flag;
+      }
+      function checkEmail() {
+        var email = document.getElementById("email").value;
+        var reg_email = / /;
+        var flag = reg_email.test(email);
+        var s_email = document.getElementById("s_email");
+        if ((email = document.getElementById("email").value == "")) {
+          alert("请输入邮箱");
+          s_email.innerHTML = "*请输入邮箱";
+        } else {
+          s_email.innerHTML =
+            "<img width='35' height='25' src='images/check.png'/>";
+        }
+        return flag;
+      }
+      function checkName() {
+        if ((name = document.getElementById("name").value == "")) {
+          alert("请输入姓名");
+          s_name.innerHTML = "*请输入姓名";
+        } else {
+          s_name.innerHTML =
+            "<img width='35' height='25' src='images/check.png'/>";
+        }
+        return flag;
+        console.log(flag);
+      }
+      function checkTel() {
+        var tel = document.getElementById("tel").value;
+        var reg_tel = /^1[34578]\d{9}$/;
+        var flag = reg_tel.test(tel);
+        var s_tel = document.getElementById("s_tel");
+        if (flag) {
+          s_tel.innerHTML =
+            "<img width='35' height='25' src='images/check.png'/>";
+        } else {
+          alert("请输入11位有效手机号");
+          s_tel.innerHTML = "*请输入11位有效手机号";
+        }
+        return flag;
+      }
+      function checkCode() {
+        var checkcode = document.getElementById("checkcode").value;
+        var reg_checkcode = / /;
+        var flag = reg_checkcode.test(checkcode);
+        var s_checkcode = document.getElementById("s_checkcode");
+        if ((checkcode = document.getElementById("checkcode").value == "")) {
+          alert("请输入验证码");
+        }
+        return flag;
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      console.log("Hello !");
+      console.log("Chris.@163.com");
+      console.log("32107代佳昌");
+      console.log("20215021");
+    </script>
+    <div class="rg_layout">
+      <div class="rg_left">
+        <p>新用户注册</p>
+        <p>USER REGISTER</p>
+      </div>
+      <div class="rg_center">
+        <div class="rg_form">
+          <form action="#" id="form" method="get">
+            <table>
+              <tr>
+                <td class="td_left"><label for="username">用户名</label></td>
+                <td class="td_right">
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="请输入用户名"
+                  />
+                  <span id="s_username" class="error"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label for="password">密码</label></td>
+                <td class="td_right">
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="请输入密码"
+                  />
+                  <span id="s_password" class="error"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label for="password2">确认密码</label></td>
+                <td class="td_right">
+                  <input
+                    type="password"
+                    name="password2"
+                    id="password2"
+                    placeholder="请确认密码"
+                  />
+                  <span id="s_password2" class="error"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label for="email">Email</label></td>
+                <td class="td_right">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="请输入邮箱"
+                  />
+                  <span id="s_email" class="error"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label for="name">姓名</label></td>
+                <td class="td_right">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="请输入姓名"
+                  />
+                  <span id="s_name" class="error"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label for="tel">手机号</label></td>
+                <td class="td_right">
+                  <input
+                    type="text"
+                    name="tel"
+                    id="tel"
+                    placeholder="请输入手机号"
+                  />
+                  <span id="s_tel" class="error"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label>性别</label></td>
+                <td class="td_right">
+                  <input type="radio" name="gender" value="male" checked /> 男
+                  <input type="radio" name="gender" value="female" /> 女
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label for="birthday">出生日期</label></td>
+                <td class="td_right">
+                  <input
+                    type="date"
+                    name="birthday"
+                    id="birthday"
+                    placeholder="请输入出生日期"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="td_left"><label for="checkcode">验证码</label></td>
+                <td class="td_right">
+                  <input
+                    type="text"
+                    name="checkcode"
+                    id="checkcode"
+                    placeholder="请输入验证码"
+                  />
+                  <span id="s_checkcode" class="error"></span>
+                  <img
+                    id="img_check"
+                    src="images/verify_code.jpg"
+                  /><!-- 验证码 -->
+                </td>
+              </tr>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <tr>
+                <td colspan="10" id="td_sub">
+                  <input type="submit" id="btn_sub" value="注册" />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+      <div class="rg_right">
+        <p>已有账号?<a href="index.html">立即登录</a></p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登陆页面</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <script>
+      console.log("Hello !");
+      console.log("Chris.@163.com");
+      console.log("32107代佳昌");
+      console.log("20215021");
+    </script>
+    <div class="htmleaf-container">
+      <div class="wrapper">
+        <div class="container">
+          <h1 id="h"></h1>
+          <form class="form">
+            <input
+              id="userName"
+              name="userName"
+              type="text"
+              placeholder="用户名"
+            />
+            <input id="pwd" name="pwd" type="password" placeholder="密码" />
+            <button type="submit" id="login-button">登录</button><br /><br />
+            <button type="reset" id="login-button">重置</button><br /><br />
+            <button type="submit" id="login-button" onclick="Re()">注册</button>
+          </form>
+        </div>
+
+        <ul class="bg-bubbles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      function Re() {
+        window.open("register.html");
+      }
+    </script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/verification.js"></script>
+  </body>
+</html>

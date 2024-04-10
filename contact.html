@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>评论</title>
+  </head>
+
+  <body bgcolor="#a8dba8">
+    <script>
+      console.log("Hello !");
+      console.log("Chris.@163.com");
+      console.log("32107代佳昌");
+      console.log("20215021");
+    </script>
+    <form name="form1" method="post" action="">
+      <table width="352" border="1">
+        <tr>
+          <td width="166">评论主题:</td>
+          <td width="170" height="38">
+            <label>
+              <input type="text" name="评论主题" />
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td height="41">作者:</td>
+          <td>
+            <label>
+              <input name="作者" type="text" value="" />
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td height="109">评论内容:</td>
+          <td>
+            <label>
+              <textarea name="textarea" rows="8"></textarea>
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>
+              <input
+                type="button"
+                name="Submit3"
+                value="退出"
+                onclick="exit()"
+              />
+            </label>
+          </td>
+          <td>
+            <input
+              type="submit"
+              name="Submit"
+              value="提交"
+              onClick="check(form1)"
+            />
+            <input type="reset" name="Submit2" value="重置" />
+          </td>
+        </tr>
+      </table>
+      <p>
+        <label><br /> </label>
+        <label></label>
+      </p>
+    </form>
+    <script language="javascript">
+      //检查非空
+      function check(form) {
+        for (i = 0; i < form.length; i++) {
+          if (form.elements[i].value == "") {
+            //e小写
+            alert(form.elements[i].name + "不能为空！");
+            form.elements[i].focus(); //指定表单元素获取焦点
+            return;
+          }
+        }
+        form.submit();
+      }
+      //退出  返回至login
+      function exit() {
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>
